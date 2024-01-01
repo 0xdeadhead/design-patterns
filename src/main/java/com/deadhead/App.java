@@ -6,6 +6,10 @@ import com.deadhead.decorator_pattern.implementation.condiments.Milk;
 import com.deadhead.decorator_pattern.implementation.condiments.Whip;
 import com.deadhead.decorator_pattern.specifications.Beverage;
 import com.deadhead.decorator_pattern.specifications.CondimentDecorator;
+import com.deadhead.factory_pattern.implementation.ChicagoPizzaStore;
+import com.deadhead.factory_pattern.implementation.NYPizzaStore;
+import com.deadhead.factory_pattern.specifications.Pizza;
+import com.deadhead.factory_pattern.specifications.PizzaStore;
 import com.deadhead.observer_pattern.implementation.StatsDisplay;
 import com.deadhead.observer_pattern.implementation.WeatherData;
 import com.deadhead.strategy_pattern.implementations.DuckImpl;
@@ -54,6 +58,16 @@ public class App {
         System.out.println(espresso.getDescription() + ":" + espresso.getCost());
 
         System.out.println("Decorator Pattern End");
+
+        System.out.println("Factory Pattern in Action");
+        PizzaStore newyorkPizzaStore = new NYPizzaStore();
+        Pizza nyPizza = newyorkPizzaStore.orderPizza("cheese");
+        System.out.println(nyPizza);
+        PizzaStore chicagoPizzaStore = new ChicagoPizzaStore();
+        Pizza chickenPizza = chicagoPizzaStore.orderPizza("chicken");
+        System.out.println(chickenPizza);
+
+        System.out.println("Factory Pattern End");
 
     }
 }
