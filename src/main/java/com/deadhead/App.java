@@ -1,6 +1,11 @@
 package com.deadhead;
 
 import com.deadhead.strategy_pattern.implementations.DumbQuackableImpl;
+import com.deadhead.decorator_pattern.implementation.beverages.Espresso;
+import com.deadhead.decorator_pattern.implementation.condiments.Milk;
+import com.deadhead.decorator_pattern.implementation.condiments.Whip;
+import com.deadhead.decorator_pattern.specifications.Beverage;
+import com.deadhead.decorator_pattern.specifications.CondimentDecorator;
 import com.deadhead.observer_pattern.implementation.StatsDisplay;
 import com.deadhead.observer_pattern.implementation.WeatherData;
 import com.deadhead.strategy_pattern.implementations.DuckImpl;
@@ -10,7 +15,6 @@ import com.deadhead.strategy_pattern.implementations.RocketFlyableImpl;
 import com.deadhead.strategy_pattern.specifications.Duck;
 import com.deadhead.strategy_pattern.specifications.Flyable;
 import com.deadhead.strategy_pattern.specifications.Quackable;
-
 
 public class App {
     public static void main(String[] args) {
@@ -42,6 +46,14 @@ public class App {
         weatherData.setHumidity(2.88D);
 
         System.out.println("Observer pattern End");
+
+        System.out.println("Decorator Pattern in Action");
+        Beverage espresso = new Espresso();
+        espresso = new Milk(espresso);
+        espresso = new Whip(espresso);
+        System.out.println(espresso.getDescription() + ":" + espresso.getCost());
+
+        System.out.println("Decorator Pattern End");
 
     }
 }
