@@ -5,13 +5,13 @@ import com.deadhead.decorator_pattern.implementation.beverages.Espresso;
 import com.deadhead.decorator_pattern.implementation.condiments.Milk;
 import com.deadhead.decorator_pattern.implementation.condiments.Whip;
 import com.deadhead.decorator_pattern.specifications.Beverage;
-import com.deadhead.decorator_pattern.specifications.CondimentDecorator;
 import com.deadhead.factory_pattern.implementation.ChicagoPizzaStore;
 import com.deadhead.factory_pattern.implementation.NYPizzaStore;
 import com.deadhead.factory_pattern.specifications.Pizza;
 import com.deadhead.factory_pattern.specifications.PizzaStore;
 import com.deadhead.observer_pattern.implementation.StatsDisplay;
 import com.deadhead.observer_pattern.implementation.WeatherData;
+import com.deadhead.singleton_pattern.Configuration;
 import com.deadhead.strategy_pattern.implementations.DuckImpl;
 import com.deadhead.strategy_pattern.implementations.NormalFlyableImpl;
 import com.deadhead.strategy_pattern.implementations.NormalQuakableImpl;
@@ -68,6 +68,15 @@ public class App {
         System.out.println(chickenPizza);
 
         System.out.println("Factory Pattern End");
+
+        System.out.println("Singleton Pattern");
+        Configuration config1 = Configuration.getInstance("test1");
+        // unchanged
+        Configuration config2 = Configuration.getInstance("test2");
+        System.out.println(config1.getConfigurationParam());
+        System.out.println(config2.getConfigurationParam());
+        System.out.println(config1 == config2);
+        System.out.println("Singleton Pattern End");
 
     }
 }
