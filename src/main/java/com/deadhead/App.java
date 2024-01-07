@@ -1,6 +1,11 @@
 package com.deadhead;
 
 import com.deadhead.strategy_pattern.implementations.DumbQuackableImpl;
+import com.deadhead.command_pattern.implementation.Light;
+import com.deadhead.command_pattern.implementation.LightOffCommand;
+import com.deadhead.command_pattern.implementation.LightOnCommand;
+import com.deadhead.command_pattern.implementation.RemoteControl;
+import com.deadhead.command_pattern.specifications.Command;
 import com.deadhead.decorator_pattern.implementation.beverages.Espresso;
 import com.deadhead.decorator_pattern.implementation.condiments.Milk;
 import com.deadhead.decorator_pattern.implementation.condiments.Whip;
@@ -78,5 +83,14 @@ public class App {
         System.out.println(config1 == config2);
         System.out.println("Singleton Pattern End");
 
+        System.out.println("Command Pattern");
+        Light light = new Light();
+        Command lightOnCommand = new LightOnCommand(light);
+        Command lightOffCommand = new LightOffCommand(light);
+        RemoteControl remoteControl = new RemoteControl(lightOnCommand, lightOffCommand);
+        remoteControl.turnOnLight();
+        remoteControl.turnOffLight();
+
+        System.out.println("Command Pattern End");
     }
 }
