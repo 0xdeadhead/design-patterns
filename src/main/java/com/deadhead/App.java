@@ -1,6 +1,9 @@
 package com.deadhead;
 
 import com.deadhead.strategy_pattern.implementations.DumbQuackableImpl;
+import com.deadhead.adapter_pattern.implementation.DuckAdapter;
+import com.deadhead.adapter_pattern.implementation.WildTurkey;
+import com.deadhead.adapter_pattern.specifications.Turkey;
 import com.deadhead.command_pattern.implementation.Light;
 import com.deadhead.command_pattern.implementation.LightOffCommand;
 import com.deadhead.command_pattern.implementation.LightOnCommand;
@@ -90,7 +93,12 @@ public class App {
         RemoteControl remoteControl = new RemoteControl(lightOnCommand, lightOffCommand);
         remoteControl.turnOnLight();
         remoteControl.turnOffLight();
-
         System.out.println("Command Pattern End");
+        System.out.println("Adapter Pattern Start");
+        Turkey wildTurkey = new WildTurkey();
+        com.deadhead.adapter_pattern.specifications.Duck duck = new DuckAdapter(wildTurkey);
+        duck.quack();
+        duck.fly();
+        System.out.println("Adapter Pattern End");
     }
 }
