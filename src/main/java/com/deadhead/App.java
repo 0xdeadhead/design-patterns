@@ -27,6 +27,9 @@ import com.deadhead.strategy_pattern.implementations.RocketFlyableImpl;
 import com.deadhead.strategy_pattern.specifications.Duck;
 import com.deadhead.strategy_pattern.specifications.Flyable;
 import com.deadhead.strategy_pattern.specifications.Quackable;
+import com.deadhead.template_pattern.implementation.Coffee;
+import com.deadhead.template_pattern.implementation.Tea;
+import com.deadhead.template_pattern.specification.HotBeverage;
 
 public class App {
     public static void main(String[] args) {
@@ -100,5 +103,11 @@ public class App {
         duck.quack();
         duck.fly();
         System.out.println("Adapter Pattern End");
+        System.out.println("Template Pattern Start");
+        HotBeverage tea = new Tea();
+        tea.prepareRecipe();
+        HotBeverage coffee = new Coffee();
+        coffee.prepareRecipe();
+        System.out.println("Template Pattern End");
     }
 }
