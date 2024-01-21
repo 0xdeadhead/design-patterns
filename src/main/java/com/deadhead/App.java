@@ -17,6 +17,11 @@ import com.deadhead.factory_pattern.implementation.ChicagoPizzaStore;
 import com.deadhead.factory_pattern.implementation.NYPizzaStore;
 import com.deadhead.factory_pattern.specifications.Pizza;
 import com.deadhead.factory_pattern.specifications.PizzaStore;
+import com.deadhead.iterator_pattern.implementation.BreakFastMenu;
+import com.deadhead.iterator_pattern.implementation.DinnerMenu;
+import com.deadhead.iterator_pattern.specifications.Iterator;
+import com.deadhead.iterator_pattern.specifications.Menu;
+import com.deadhead.iterator_pattern.specifications.MenuItem;
 import com.deadhead.observer_pattern.implementation.StatsDisplay;
 import com.deadhead.observer_pattern.implementation.WeatherData;
 import com.deadhead.singleton_pattern.Configuration;
@@ -109,5 +114,20 @@ public class App {
         HotBeverage coffee = new Coffee();
         coffee.prepareRecipe();
         System.out.println("Template Pattern End");
+        System.out.println("Iterator Pattern Start");
+        // hides internal implementation of menu
+        Menu dinnerMenu = new DinnerMenu();
+        Iterator<MenuItem> dinnerMenuIterator = dinnerMenu.getIterator();
+        Menu breakFastMenu = new BreakFastMenu();
+        Iterator<MenuItem> breakFastMenuIterator = breakFastMenu.getIterator();
+        while (dinnerMenuIterator.hasNext()) {
+            MenuItem dinnerMenuItem = dinnerMenuIterator.next();
+            System.out.println(dinnerMenuItem);
+        }
+        while (breakFastMenuIterator.hasNext()) {
+            MenuItem breakFastMenuItem = breakFastMenuIterator.next();
+            System.out.println(breakFastMenuItem);
+        }
+        System.out.println("Iterator Pattern End");
     }
 }
