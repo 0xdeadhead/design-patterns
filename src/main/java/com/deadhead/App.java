@@ -27,6 +27,9 @@ import com.deadhead.iterator_pattern.specifications.Menu;
 import com.deadhead.iterator_pattern.specifications.MenuItem;
 import com.deadhead.observer_pattern.implementation.StatsDisplay;
 import com.deadhead.observer_pattern.implementation.WeatherData;
+import com.deadhead.proxy_pattern.implementation.ActualService;
+import com.deadhead.proxy_pattern.implementation.ProxyService;
+import com.deadhead.proxy_pattern.specifications.Service;
 import com.deadhead.singleton_pattern.Configuration;
 import com.deadhead.state_pattern.implementation.MusicPlayerImpl;
 import com.deadhead.state_pattern.implementation.PausedState;
@@ -161,6 +164,11 @@ public class App {
         musicPlayer.play();
         musicPlayer.pause();
         System.out.println("State Pattern End");
+        System.out.println("Proxy Pattern Start");
+        Service actualService = new ActualService();
+        Service proxyService = new ProxyService(actualService);
+        System.out.println(proxyService.Operation());
+        System.out.println("Proxy Pattern End");
 
     }
 }
