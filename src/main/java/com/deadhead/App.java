@@ -9,6 +9,9 @@ import com.deadhead.command_pattern.implementation.LightOffCommand;
 import com.deadhead.command_pattern.implementation.LightOnCommand;
 import com.deadhead.command_pattern.implementation.RemoteControl;
 import com.deadhead.command_pattern.specifications.Command;
+import com.deadhead.composite_pattern.implementation.SubMenu;
+import com.deadhead.composite_pattern.implementation.SubMenuItem;
+import com.deadhead.composite_pattern.specifications.MenuComponent;
 import com.deadhead.decorator_pattern.implementation.beverages.Espresso;
 import com.deadhead.decorator_pattern.implementation.condiments.Milk;
 import com.deadhead.decorator_pattern.implementation.condiments.Whip;
@@ -129,5 +132,19 @@ public class App {
             System.out.println(breakFastMenuItem);
         }
         System.out.println("Iterator Pattern End");
+        System.out.println("Composite Pattern Start");
+        MenuComponent pancakeHouseMenu = new SubMenu("PANCAKE HOUSE MENU", "Breakfast");
+        MenuComponent dinerMenu = new SubMenu("DINER MENU", "Lunch");
+        MenuComponent cafeMenu = new SubMenu("CAFE MENU", "Dinner");
+        MenuComponent dessertMenu = new SubMenu("DESSERT MENU", "Dessert of course!");
+        MenuComponent allMenus = new SubMenu("ALL MENUS", "All menus combined");
+        allMenus.addComponent(pancakeHouseMenu);
+        allMenus.addComponent(dinerMenu);
+        allMenus.addComponent(cafeMenu);
+        dinerMenu.addComponent(new SubMenuItem("Pizza", "pizzaaaaaa", 180.25d));
+        dessertMenu.addComponent(new SubMenuItem("Gulab Jamun", "Gulaab Jamun description", 80.22d));
+        dinerMenu.addComponent(dessertMenu);
+        allMenus.print();
+        System.out.println("Composite Pattern End");
     }
 }
