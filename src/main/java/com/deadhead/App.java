@@ -28,6 +28,11 @@ import com.deadhead.iterator_pattern.specifications.MenuItem;
 import com.deadhead.observer_pattern.implementation.StatsDisplay;
 import com.deadhead.observer_pattern.implementation.WeatherData;
 import com.deadhead.singleton_pattern.Configuration;
+import com.deadhead.state_pattern.implementation.MusicPlayerImpl;
+import com.deadhead.state_pattern.implementation.PausedState;
+import com.deadhead.state_pattern.implementation.PlayingState;
+import com.deadhead.state_pattern.specifications.MusicPlayer;
+import com.deadhead.state_pattern.specifications.State;
 import com.deadhead.strategy_pattern.implementations.DuckImpl;
 import com.deadhead.strategy_pattern.implementations.NormalFlyableImpl;
 import com.deadhead.strategy_pattern.implementations.NormalQuakableImpl;
@@ -146,5 +151,16 @@ public class App {
         dinerMenu.addComponent(dessertMenu);
         allMenus.print();
         System.out.println("Composite Pattern End");
+
+        System.out.println("State Pattern Start");
+        State playingState = new PlayingState();
+        State pausedState = new PausedState();
+        MusicPlayer musicPlayer = new MusicPlayerImpl(playingState, pausedState, pausedState);
+        musicPlayer.pause();
+        musicPlayer.play();
+        musicPlayer.play();
+        musicPlayer.pause();
+        System.out.println("State Pattern End");
+
     }
 }
